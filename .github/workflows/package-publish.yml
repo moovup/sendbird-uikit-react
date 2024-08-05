@@ -56,14 +56,14 @@ jobs:
         run: |
           yarn install
           yarn build
-      - name: Publish to npm
+      - name: Publish to GitHub Packages
         run: |
           cd ./dist
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.npm_token }}" > .npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > .npmrc
           if [ -z "${{ github.event.inputs.npm_tag }}" ]; then
-            npm publish --access=public
+            npm publish --registry=https://npm.pkg.github.com --access=public
           else
-            npm publish --tag ${{ github.event.inputs.npm_tag }} --access=public
+            npm publish --tag ${{ github.event.inputs.npm_tag }} --registry=https://npm.pkg.github.com --access=public
             echo "npm_tag is provided; Skipping the rest of the steps."
             echo "SKIP_REST=true" >> $GITHUB_ENV
           fi
