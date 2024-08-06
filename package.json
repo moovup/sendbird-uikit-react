@@ -58,10 +58,7 @@
     "build:storybook": "storybook build",
     "build:apps:testing": "yarn workspace @uikit-app/testing build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+git@github.com:sendbird/sendbird-uikit-react-sources.git"
-  },
+  "repository": "https://github.com/moovup/sendbird-uikit-react",
   "author": "SendBird <support@sendbird.com>",
   "license": "SEE LICENSE IN LICENSE.md",
   "peerDependencies": {
